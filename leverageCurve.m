@@ -4,7 +4,7 @@
 %leverage curve is derivative of axle movement as a function of shaft movement
 function y = leverageCurve(x)
 	y = -0.004*x.^2 + .2*x+1; %place holder for all the actual code
-end
+
 
 %lower link
 %theta0 = 30; %deg, down from -x axis
@@ -70,3 +70,6 @@ rearBottom = lowPivot + [lengthLow*cos(thetaLowPivot),lengthLow*sin(thetaLowPivo
 %should now have rearBottom and rearTop in absolute coordinates [i,j]
 %need to write part for axle travel based off of those positions
 
+y = rearTop;
+
+end
