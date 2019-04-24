@@ -20,9 +20,16 @@ while criteria = 0
     [t2,y2] = ode23([some other function],tspan,y0);
     response1(n) = y1;
     response2(n) = y2;
-    if y1 > [tolerance] && 
+    if [requirements for y1 and y2 to both be over or underdamped] %both estimates are either underdamped or overdamped
+        cL = cL + 2;
+        cU = cU + 2;
+    elseif y1 < y2
+        cU = c2;
+    elseif y2 > y1
+        cL = c1;
+    end
         
-    if y1 < [some y] || y2 < [some y] %close enough to critical damping; displacement after reaching equilibrium does not go too far past zero
+    if y1 < [tolerance] || y2 < [tolerance] %close enough to critical damping; displacement after reaching equilibrium does not go too far past zero
         while critera = 0
             n = n + 1;
             [t,y] = ode23(solode,tspan,y0);
