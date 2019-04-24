@@ -5,7 +5,7 @@ function [cc] = critical_damping_check(y0,m,k)
 criteria = 0;
 n = 0;
 tau = 2*pi*sqrt(m/k); %solve for period of oscillation
-tspan = [0 (0.5*tau)]; %tspan is the length of time for half of an oscillation- half of the period!
+tspan = [0 tau];
 
 phi = (1+sqrt(5))/2;
 cL = 0;
@@ -20,7 +20,8 @@ while criteria = 0
     [t2,y2] = ode23([some other function],tspan,y0);
     response1(n) = y1;
     response2(n) = y2;
-    
+    if y1 > [tolerance] && 
+        
     if y1 < [some y] || y2 < [some y] %close enough to critical damping; displacement after reaching equilibrium does not go too far past zero
         while critera = 0
             n = n + 1;
