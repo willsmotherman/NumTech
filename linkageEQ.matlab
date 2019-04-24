@@ -1,10 +1,10 @@
 %diff eq of bike
-function ydot = eqOfBike(t,y)
+function ydot = linkageEQ(t,y)
 	m = 60; %kg
 	%175.1 N/m = 1 lb/in
 	k = 61294; %N/m
 	global dampingConstant = .01;
-	global sag = 
+	%global sag = 
 
 	force = m*9.81; %i think this would take into account sag
 
