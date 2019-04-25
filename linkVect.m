@@ -5,7 +5,7 @@
 function y = linkVect(x)
 	%y = -0.004*x.^2 + .2*x+1; %place holder for all the actual code
 
-
+x = x*1000;
 %lower link
 %theta0 = 30; %deg, down from -x axis
 lengthLow = 50.8; %mm
@@ -84,7 +84,7 @@ thetaChainstay = thetaLowPivot - pi() + thetaBottomToLower + thetaRearBottomTri;
 %axleInit
 axleAbsolute = [cos(thetaChainstay)*lengthChainstay,sin(thetaChainstay)*lengthChainstay] + rearBottom;
 %axleNorm = axleAbsolute-axleInit;
-y = axleAbsolute;
+y = axleAbsolute./ 1000;
 %test
 
 

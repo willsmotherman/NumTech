@@ -8,7 +8,7 @@ function y = invert(x)
 	ymid = (y1+y2)/2;
 	xmid = linkageRatio(ymid);
 	n = 1;
-	while(n <18)
+	while(n <14)
 			if x>xmid
 				y1 = ymid;
 				x1 = xmid;
