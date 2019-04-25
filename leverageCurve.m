@@ -4,5 +4,8 @@ function dy = leverageCurve(x)
         y(n) = linkageRatio(x(n));
     end
 	dy = diff(y)./.01;
-    
+    %plot(y(1:length(x)-1),dy)
+    %title('Leverage Curve')
+    %xlabel('Axle Position(mm)')
+    %ylabel('Leverage ratio')
 end
