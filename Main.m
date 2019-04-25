@@ -1,4 +1,4 @@
 %main file
 %numtech project
 
-[a] = critical_damping_check(10,60,61294);
+[a] = critical_damping_check([0;10],60,25000);
