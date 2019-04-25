@@ -1,4 +1,4 @@
-function Y=solode()%,a,b,c)
+function Y=solode() %,a,b,c)
 %solving ode
 
 %Y0=[y0;dy0];  % initial conditions: [y0,dy0]'
