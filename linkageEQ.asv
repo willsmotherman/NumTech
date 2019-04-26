@@ -3,9 +3,9 @@ function ydot = linkageEQ(t,y)
 	m = 60; %kg
 	%175.1 N/m = 1 lb/in
 	k = 60000; %N/m
-	global dampingConstant 
+	%global dampingConstant 
 	%global sag = 
-    %dampingConstant = 5000;
+    dampingConstant = 1000;
 	force = m*9.81; %i think this would take into account sag
 
 	xdot = y(1);
