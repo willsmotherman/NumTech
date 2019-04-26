@@ -12,6 +12,8 @@ cL = 0; %initial guesses
 cU = 10000;
 tol = 0.002*y0(2); %our tolerance?!
 n = 0;
+equi = sag(m,k)
+
 while criteria == 0
     n = n + 1;
     d = (phi-1)*(cU-cL); %our golden ratio-using value
@@ -66,12 +68,12 @@ while criteria == 0
     else
         y_2 = y2(TF2first,2);
     end
-    if abs(y_1) < tol %close enough to critical damping
+    if abs(y_1-equi) < tol %close enough to critical damping
          criteria = 1; %end the while loop; c1 is the critical damping
-    elseif abs(y_2) < tol
+    elseif abs(y_2-equi) < tol
         criteria = 2; %end the while loop; c2 is the critical damping
     end
-    if abs(y_1) < abs(y_2)
+    if abs(y_1-equi) < abs(y_2-equi)
         cL = c2;
     else
         cU = c1;
