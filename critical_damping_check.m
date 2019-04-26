@@ -1,4 +1,4 @@
-function [cc] = critical_damping_check(y0,m,k)
+function  critical_damping_check(y0,m,k)
 % Critical Damping Check; the last part of the code
 %   Detailed explanation
 
