@@ -9,7 +9,7 @@ n = find(abs(x-initGuess) < 0.00004);
 %assuming that one iteration is good enough
 g1 = m*dy(n)*9.81/k;
 n = find(abs(x-g1)<.00004);
-y = linkageRatio(x(n));
+y = (x(n));
 
 
 

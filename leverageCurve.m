@@ -4,8 +4,10 @@ function dy = leverageCurve(x)
         y(n) = linkageRatio(x(n));
     end
 	dy = diff(y)./(x(2)-x(1));
+    figure()
     plot(y(1:length(x)-1),dy)
     title('Leverage Curve')
     xlabel('Axle Position(m)')
     ylabel('Leverage ratio')
+    figure()
 end
