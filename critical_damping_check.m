@@ -68,12 +68,12 @@ while criteria == 0
     else
         y_2 = y2(TF2first,2);
     end
-    if abs(y_1+equi) < tol %close enough to critical damping
+    if abs(equi-y_1) < tol %close enough to critical damping
          criteria = 1; %end the while loop; c1 is the critical damping
-    elseif abs(y_2+equi) < tol
+    elseif abs(equi-y_2) < tol
         criteria = 2; %end the while loop; c2 is the critical damping
     end
-    if abs(y_1+equi) < abs(y_2+equi)
+    if abs(equi-y_1) < abs(equi-y_2)
         cL = c2;
     else
         cU = c1;
