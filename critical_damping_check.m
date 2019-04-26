@@ -10,7 +10,7 @@ tspan = [0 2*tau]; %timespan is two periods
 phi = (1+sqrt(5))/2; %our golden ratio
 cL = 0; %initial guesses
 cU = 10000;
-tol = 0.1*y0(2); %our tolerance?!
+tol = 0.002*y0(2); %our tolerance?!
 n = 0;
 while criteria == 0
     n = n + 1;
