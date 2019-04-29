@@ -1,0 +1,59 @@
+function critDamp(y0,m,k)
+
+period = pi()*sqrt(m/k);
+timeSpan = [0 15*period];
+
+isDamped = false;
+
+tol = y0(2)*.01;
+sagPos = sag(m,k);
+
+global dampingConstant
+c1 = 0;
+c2 = 500;
+
+
+%i just used midsection search becuase it's easier
+
+while ~isDamped
+	dampingConstant = c1;
+	[t1,y1] = ode113(@linkageEQ,timeSpan,y0);
+    %figure()
+    %plot(t1,y1(:,2))
+	if abs(min(y1(:,2)) - sagPos)<tol && min(y1(:,2))<sagPos
+		isDamped = true;
+		cOut = c1;%we can eliminate the possibility that c1 is overdamped by starting at c1 = 0;
+	else
+		dampingConstant = c2;
+		[t2,y2] = ode113(@linkageEQ,timeSpan,y0);
+        %figure()
+        %plot(t2,y2(:,2))
+		if abs(min(y2(:,2)) - sagPos)<tol && min(y2(:,2))<sagPos
+			isDamped = true;
+			cOut = c2;
+		elseif min(y2(:,2)) < sagPos 
+			c2 = 2*c2 - c1; %technically don't think -c1 is neccesary, should only run when c1 is 0
+		else
+			cmid = (c1+c2)/2;
+			dampingConstant = cmid;
+			[tmid,ymid] = ode23(@linkageEQ,timeSpan,y0);
+			if abs(min(ymid(:,2))-sagPos)<tol && min(ymid(:,2))<sagPos
+				isDamped = true;
+				cOut = cmid;
+                plot(tmid,ymid(:,2))
+			elseif min(ymid(:,2)) <sagPos
+				c1 = cmid;
+			else
+				c2 = cmid;
+			end
+		end
+	end
+end
+
+disp(cOut)
+
+
+
+
+
+end

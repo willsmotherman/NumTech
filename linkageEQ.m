@@ -14,7 +14,7 @@ function ydot = linkageEQ(t,y)
 	%xdotdot is axle travel, xdot and x are shaft travel
 	%xdotdot = (force - dampingConstant.*xdot - k.*x)./m;
 	%xdotdot = %TODO write this, need leverage curve as actual leverage curve as function of wheel travel
-	xdotdot = (force - dampingConstant.*invert(xdot) - k.*invert(x))./m;
+	xdotdot = (force - dampingConstant.*xdot/foo(invert(x)) - k.*invert(x))./m;
 	% should k also take into acount outside force, ie gravity/sag?
 	%could the initial position be set to sag, but idk how to make a bump then, maybe the initail is just a value we add to x?
 
